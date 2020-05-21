@@ -21,7 +21,7 @@
   <ion-tabs>
     
     <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="logout()" (click)="logout()">
+      <ion-tab-button tab="logout" type="submit" [routerLink]="['/menu/login']" (click)="authService.SignOut()">
         <ion-icon name="triangle"></ion-icon>
         <ion-label>Logout</ion-label>
         
@@ -32,9 +32,9 @@
         <ion-label>Home</ion-label>
       </ion-tab-button>
   
-      <ion-tab-button tab="register">
+      <ion-tab-button tab="login">
         <ion-icon name="square"></ion-icon>
-        <ion-label>Register</ion-label>
+        <ion-label>Login</ion-label>
       </ion-tab-button>
     </ion-tab-bar>
   

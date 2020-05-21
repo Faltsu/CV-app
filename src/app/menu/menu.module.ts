@@ -7,12 +7,17 @@ import { MenuPage } from './menu.page';
 import { MenuPageRoutingModule } from './Menu-routing.module';
 import { AuthGuard } from '../guards/auth.guard';
 // Jarkko Hämäläinen 1701558
-//Has paths for the menu array. At the moment authguard blocks access to contact page without login. Proper functionality for authguard pending proper login backend.
+//Has paths for the menu array. Authguard has been implemented 
+//and will block access to the pages marked with canactivate if user is not logged in.
 const routes: Routes = [
   {
     path: 'menu',
     component: MenuPage,
     children: [
+      {
+      path: 'verify-email',
+      loadChildren: '../verify-email/verify-email.module#VerifyEmailPageModule'
+      },
       {
       path: 'home',
       canActivate: [AuthGuard],
@@ -36,26 +41,32 @@ const routes: Routes = [
         },
       {
         path: 'personalinfo',
+        canActivate: [AuthGuard],
         loadChildren: '../personalinfo/personalinfo.module#PersonalinfoPageModule'
       },
       {
         path: 'technical',
+        canActivate: [AuthGuard],
         loadChildren: '../technical/technical.module#TechnicalPageModule'
       },
       {
         path: 'soft',
+        canActivate: [AuthGuard],
         loadChildren: '../soft/soft.module#SoftPageModule'
       },
       {
         path: 'personal',
+        canActivate: [AuthGuard],
         loadChildren: '../personal/personal.module#PersonalPageModule'
       },
       {
         path: 'team',
+        canActivate: [AuthGuard],
         loadChildren: '../team/team.module#TeamPageModule'
       },
       {
         path: 'extra',
+        canActivate: [AuthGuard],
         loadChildren: '../extra/extra.module#ExtraPageModule'
       }
     ]
@@ -63,7 +74,8 @@ const routes: Routes = [
 
 {
 path: '',
-redirectTo: '/menu/home'}
+redirectTo: '/menu/login',
+pathMatch: 'prefix'}
 ]
 @NgModule({
   imports: [

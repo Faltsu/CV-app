@@ -1,8 +1,7 @@
-<!--Jarkko Hämäläinen 1701558
-  Register page No backend at the moment -->
+<!--Register page for firebase login Jarkko Hämäläinen 1701558-->
 <ion-header>
   <ion-toolbar>
-  <ion-title>Register</ion-title>
+  <ion-title>Register User</ion-title>
   <ion-buttons slot="start">
     <ion-back-button defaultHref="/login"></ion-back-button>
     <ion-menu-button autoHide="false"></ion-menu-button>
@@ -10,30 +9,20 @@
   </ion-toolbar>
   </ion-header>
   <ion-content>
-    <form>
-      <ion-item lines="full">
-        <ion-label position="floating">First name</ion-label>
-        <ion-input type="text" required></ion-input>
-      </ion-item>
-  
-      <ion-item lines="full">
-        <ion-label position="floating">Last name</ion-label>
-        <ion-input type="text" required></ion-input>
-      </ion-item>
-  
+    <form>    
       <ion-item lines="full">
         <ion-label position="floating">Email</ion-label>
-        <ion-input type="text" required></ion-input>
-      </ion-item>
+        <ion-input type="text" #email required></ion-input>
+      </ion-item> 
   
       <ion-item lines="full">
         <ion-label position="floating">Password</ion-label>
-        <ion-input type="password" required></ion-input>
+        <ion-input type="password" #password required></ion-input>
       </ion-item>
   
       <ion-row>
-        <ion-col>
-          <ion-button type="submit" color="danger" expand="block">Sign Up</ion-button>
+        <ion-col> 
+        <ion-button type="submit" (click)="signUp(email, password)" expand="block">Register</ion-button>
         </ion-col>
       </ion-row>
     </form>

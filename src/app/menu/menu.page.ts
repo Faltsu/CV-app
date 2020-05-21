@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterEvent } from '@angular/router';
-import { AuthenticationService } from '../services/authentication.service';
+import { AuthenticationService } from "../shared/authentication-service";
 // Jarkko Hämäläinen 1701558
 // Array for hamburger menu and paths for all the pages.
 @Component({
@@ -12,20 +12,20 @@ export class MenuPage implements OnInit {
 activePath = '';
 pages = [
 {
-name: 'Register',
-path: '/menu/register'
+  name: 'Login',
+  path: '/menu/login'
 },
 {
-name: 'Home',
-path: '/menu/home'
+  name: 'Register',
+  path: '/menu/register'
 },
 {
-name: 'Contact',
-path: '/menu/contact'
+  name: 'Home',
+  path: '/menu/home'
 },
 {
-name: 'Login',
-path: '/menu/login'
+  name: 'Contact',
+  path: '/menu/contact'
 },
 {
   name: 'Personal Information',
@@ -54,15 +54,15 @@ path: '/menu/login'
 ]
 //Jarkko Hämäläinen 1701558
 //subscribe authservice to events
-constructor(private router: Router, private authService: AuthenticationService) {
-this.router.events.subscribe((event: RouterEvent) => {
-this.activePath = event.url
-})
-}
+//Part of old auth check system
+//constructor(private router: Router, private authService: AuthenticationService) {
+//this.router.events.subscribe((event: RouterEvent) => {
+//this.activePath = event.url
+//})
+//}
 ngOnInit() {
 }
-logout() {
-  this.authService.logout();
-  console.log('Logged out');
-}
+constructor(
+  public authService: AuthenticationService
+) { }
 }

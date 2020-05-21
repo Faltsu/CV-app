@@ -1,5 +1,5 @@
 <!-- Jarkko Hämäläinen 1701558
-Home page with buttons to go to different parts of the cv -->
+Home page with buttons to go to different parts of the cv and logout -->
 <ion-header>
   <ion-toolbar>
     <ion-title>Jarkko's CV</ion-title>
@@ -9,10 +9,13 @@ Home page with buttons to go to different parts of the cv -->
   </ion-toolbar>
 </ion-header>
 <ion-content>
-<ion-button [routerLink]="['/menu/personalinfo']" routerDirection="forward">Personal Information</ion-button>
-<ion-button [routerLink]="['/menu/technical']" routerDirection="forward">Technical Skills</ion-button>
-<ion-button [routerLink]="['/menu/soft']" routerDirection="forward">Soft Skills</ion-button>
-<ion-button [routerLink]="['/menu/personal']" routerDirection="forward">Personal Projects</ion-button>
-<ion-button [routerLink]="['/menu/team']" routerDirection="forward">Team Projects</ion-button>
-<ion-button [routerLink]="['/menu/extra']" routerDirection="forward">Extra curricular activities</ion-button>
+  <div id="buttons">
+<ion-button [routerLink]="['/menu/personalinfo']" expand="block" routerDirection="forward">Personal Information</ion-button>
+<ion-button [routerLink]="['/menu/technical']" expand="block" routerDirection="forward">Technical Skills</ion-button>
+<ion-button [routerLink]="['/menu/soft']" expand="block" routerDirection="forward">Soft Skills</ion-button>
+<ion-button [routerLink]="['/menu/personal']" expand="block" routerDirection="forward">Personal Projects</ion-button>
+<ion-button [routerLink]="['/menu/team']" expand="block" routerDirection="forward">Team Projects</ion-button>
+<ion-button [routerLink]="['/menu/extra']" expand="block" routerDirection="forward">Extra curricular activities</ion-button>
+<ion-button type="submit" expand="block" color ="danger" (click)="authService.SignOut()">Logout</ion-button>
+</div>
 </ion-content>

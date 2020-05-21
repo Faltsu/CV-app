@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from "../shared/authentication-service";
 
 @Component({
   selector: 'app-forgot-password',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgotPasswordPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    public authService: AuthenticationService
+  ) { }
 
   ngOnInit() {
   }
-
+  PasswordRecover(email) {
+    return this.authService.ngFireAuth.sendPasswordResetEmail(email.value)
+    .then(() => {
+      window.alert('Password reset email has been sent, please check your inbox.');
+    }).catch((error) => {
+      window.alert(error)
+    })
+  }
 }
